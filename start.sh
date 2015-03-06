@@ -3,10 +3,10 @@
 [[ ! -z "$STARTUP_DEBUG" ]] && set -x
 
 s="/start.d"
-if [ -d "/start.d" ]
+if [ -d "$s" ]
 then
-  for script in $s/*
+  for script in $(find $s -type f -executable | sort -u)
   do
-    . $script
+    $script
   done
 fi
