@@ -15,6 +15,9 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 # configure
+ENV TIMEZONE Europe/Paris
+RUN echo $TIMEZONE > /etc/timezone && dpkg-reconfigure tzdata
+
 ADD supervisord.conf /etc/supervisor/conf.d/base.conf
 ADD vimrc /root/.vimrc
 
