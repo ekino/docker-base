@@ -18,6 +18,8 @@ RUN rm -rf /var/lib/apt/lists/*
 ENV TIMEZONE Europe/Paris
 RUN echo $TIMEZONE > /etc/timezone && dpkg-reconfigure tzdata
 
+RUN groupadd -g 42310 ekino && useradd -g 42310 -u 42310 -d /home/ekino -m -s /bin/bash ekino
+
 ADD supervisord.conf /etc/supervisor/conf.d/base.conf
 ADD vimrc /root/.vimrc
 
